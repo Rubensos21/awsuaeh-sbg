@@ -54,7 +54,6 @@ export function ServiciosPage() {
               <button type="button" className="service-filter-chip" onClick={resetFilters}>Limpiar filtros</button>
             </div>
           )}
-          <p className="services-data-note">Catálogo de ejemplo. Las puntuaciones de popularidad son ilustrativas.</p>
         </section>
       </main>
       <Footer />
