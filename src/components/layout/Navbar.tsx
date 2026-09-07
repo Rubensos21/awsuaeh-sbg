@@ -89,7 +89,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/' }) => {
     { label: 'Nosotros', path: '/nosotros', icon: Info, match: (p: string) => p.includes('nosotros') },
     { label: 'Beneficios', path: '/beneficios', icon: Star, match: (p: string) => p.includes('beneficios') },
     { label: 'Eventos', path: '/eventos', icon: Calendar, match: (p: string) => p.includes('eventos') },
-    { label: 'Servicios AWS', path: '/#why-join', icon: Grid, match: (p: string) => p.includes('#why-join') },
+    { label: 'Servicios AWS', path: '/servicios', icon: Grid, match: (p: string) => p === '/servicios' || p === '/servicios/' },
     { label: 'Equipo', path: '/equipo', icon: Users, match: (p: string) => p.includes('equipo') },
   ];
 
@@ -168,6 +168,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/' }) => {
                     <a
                       key={item.label}
                       href={item.path}
+                      aria-current={isActive ? 'page' : undefined}
                       onClick={handleNavClick(item.path)}
                       className={`flex items-center gap-3 px-4 py-3 rounded-xl font-mono text-sm transition-all duration-150 cursor-pointer ${
                         isActive
@@ -233,5 +234,4 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/' }) => {
     </>
   );
 };
-
 

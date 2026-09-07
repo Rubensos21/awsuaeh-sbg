@@ -91,8 +91,8 @@ export const Footer: React.FC = () => {
                 </li>
                 <li>
                   <a
-                    href="/#why-join"
-                    onClick={handleNavClick('/#why-join')}
+                    href="/servicios"
+                    onClick={handleNavClick('/servicios')}
                     className="hover:text-sbg-secondary transition-colors cursor-pointer"
                   >
                     # servicios

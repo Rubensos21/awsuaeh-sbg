@@ -94,8 +94,8 @@ export const WhyJoinSection: React.FC = () => {
 
             <div className="pt-6 mt-6 border-t border-sbg-gray/30 cursor-pointer">
               <a
-                href="/#why-join"
-                onClick={handleNavClick('/#why-join')}
+                href="/servicios"
+                onClick={handleNavClick('/servicios')}
                 className="inline-flex items-center gap-2 font-mono text-xs font-semibold text-sbg-purple group-hover:translate-x-1 transition-transform"
               >
                 <span>Servicios</span>

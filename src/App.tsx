@@ -4,6 +4,7 @@ import { SobreNosotrosPage } from './pages/SobreNosotrosPage';
 import { BeneficiosPage } from './pages/BeneficiosPage';
 import { EquipoPage } from './pages/EquipoPage';
 import { EventosPage } from './pages/EventosPage';
+import { ServiciosPage } from './pages/ServiciosPage';
 
 function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => window.location.pathname);
@@ -20,6 +21,10 @@ function App() {
       window.removeEventListener('locationchange', handleLocationChange);
     };
   }, []);
+
+  if (currentPath === '/servicios' || currentPath === '/servicios/') {
+    return <ServiciosPage />;
+  }
 
   if (currentPath.includes('nosotros')) {
     return <SobreNosotrosPage />;
