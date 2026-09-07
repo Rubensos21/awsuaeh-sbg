@@ -60,139 +60,48 @@ export const EventosPage: React.FC = () => {
 
   const upcomingEvents: EventItem[] = [
     {
-      id: '',
-      title: 'titulo',
+      id: 'mixtle-sesion-1',
+      title: 'Reto MIXTLE | Sesión 1: Fundamentos de la Nube',
       categoryTag: '# próximo',
       isUpcoming: true,
-      date: '3 de septiembre de 2026',
-      time: '5:00 p. m.',
-      location: 'Escuela Superior de Tlahuelilpan - UAEH (Auditorio Principal)',
-      attendeesCount: 38,
+      date: '7 de septiembre de 2026',
+      time: '11:30 a. m. - 1:30 p. m.',
+      location: 'Universidad Madero (UMAD), Puebla',
+      attendeesCount: 72,
       description:
-        'Descripción',
+        'Comienza el Reto MIXTLE con los fundamentos de Cloud Computing, modelos IaaS, PaaS y SaaS, y las ventajas de la nube para preparar la certificación AWS Certified Cloud Practitioner.',
       speakers: [
         {
-          name: 'Nombre',
-          role: 'Rol',
-          avatarUrl: 'URL',
-        },
-        {
-          name: 'Nombre',
-          role: 'Rol',
-          avatarUrl: 'URL',
+          name: 'Mariano Rodríguez Díaz',
+          role: 'Líder del AWS UG Mixtli',
+          avatarUrl: iconMeetup,
         },
       ],
-      registrationUrl: '#',
+      registrationUrl: 'https://www.meetup.com/aws-sbg-at-madero-university/events/316327976/',
     },
     {
-      id: '',
-      title: 'titulo',
+      id: 'mixtle-sesion-2',
+      title: 'Reto MIXTLE | Sesión 2: Servicios de Cómputo',
       categoryTag: '# próximo',
       isUpcoming: true,
-      date: '18 de septiembre de 2026',
-      time: '4:00 p. m.',
-      location: 'Laboratorio 2 ESTL - UAEH',
-      attendeesCount: 45,
+      date: '9 de septiembre de 2026',
+      time: '9:00 a. m. - 11:30 a. m.',
+      location: 'Evento online',
+      attendeesCount: 0,
       description:
-        'Descripción',
+        'Conoce las opciones de cómputo de AWS: máquinas virtuales, Amazon EC2, AWS Lambda, contenedores, Elastic Beanstalk y automatización con scripts.',
       speakers: [
         {
-          name: 'Nombre',
-          role: 'Rol',
-          avatarUrl: 'URL',
+          name: 'Guillermo',
+          role: 'Open Source UPIITA',
+          avatarUrl: iconMeetup,
         },
       ],
-      registrationUrl: '#',
-    },
-    {
-      id: '',
-      title: 'titulo',
-      categoryTag: '# próximo',
-      isUpcoming: true,
-      date: '2 de octubre de 2026',
-      time: '3:00 p. m.',
-      location: 'Aula 204 ESTL UAEH - Modalidad Híbrida',
-      attendeesCount: 62,
-      description:
-        'Descripción',
-      speakers: [
-        {
-          name: 'Nombre',
-          role: 'Rol',
-          avatarUrl: 'URL',
-        },
-      ],
-      registrationUrl: '#',
+      registrationUrl: 'https://www.meetup.com/aws-sbg-at-national-polytechnic-institute-upiita-campus/events/316452718/',
     },
   ];
 
-  const pastEvents: EventItem[] = [
-    {
-      id: '',
-      title: 'titulo',
-      categoryTag: '# finalizado',
-      isUpcoming: false,
-      date: '14 de noviembre de 2025',
-      time: '9:00 a. m. - 6:00 p. m.',
-      location: 'Escuela Superior de Tlahuelilpan - UAEH',
-      attendeesCount: 95,
-      description:
-        'Descripción',
-      speakers: [
-        {
-          name: 'Nombre',
-          role: 'Rol',
-          avatarUrl: 'URL',
-        },
-        {
-          name: 'Nombre',
-          role: 'Rol',
-          avatarUrl: 'URL',
-        },
-      ],
-      viewUrl: '#',
-    },
-    {
-      id: '',
-      title: 'titulo',
-      categoryTag: '# finalizado',
-      isUpcoming: false,
-      date: '28 de mayo de 2025',
-      time: '4:00 p. m.',
-      location: 'Laboratorio de Cómputo ESTL',
-      attendeesCount: 52,
-      description:
-        'Descripción',
-      speakers: [
-        {
-          name: 'Nombre',
-          role: 'Rol',
-          avatarUrl: 'URL',
-        },
-      ],
-      viewUrl: '#',
-    },
-    {
-      id: '',
-      title: 'titulo',
-      categoryTag: '# finalizado',
-      isUpcoming: false,
-      date: '10 de marzo de 2025',
-      time: '5:00 p. m.',
-      location: 'Modalidad Virtual (Discord SBG UAEH)',
-      attendeesCount: 78,
-      description:
-        'Descripción',
-      speakers: [
-        {
-          name: 'Nombre',
-          role: 'Rol',
-          avatarUrl: 'URL',
-        },
-      ],
-      viewUrl: '#',
-    },
-  ];
+  const pastEvents: EventItem[] = [];
 
   const allEvents: EventItem[] = [...upcomingEvents, ...pastEvents];
 
