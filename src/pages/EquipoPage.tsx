@@ -129,9 +129,9 @@ export const EquipoPage: React.FC = () => {
     },
     {
       id: 'Marketing Lead',
-      nickname: 'noHay',
-      name: 'pincheMarioMiPielesillawe🤬',
-      initials: 'NA',
+      nickname: 'NA',
+      name: 'Se Busca',
+      initials: '¿?',
       accentColor: '#FF57EA',
       accentBg: 'bg-sbg-pink',
       notchBg: 'bg-sbg-pink',
@@ -142,7 +142,7 @@ export const EquipoPage: React.FC = () => {
     {
       id: 'member-5',
       nickname: 'Axelinch',
-      name: 'Pinche Axel',
+      name: 'Axel',
       initials: 'AL',
       accentColor: '#FF9900',
       accentBg: 'bg-sbg-orange',
