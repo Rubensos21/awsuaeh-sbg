@@ -25,6 +25,7 @@ interface EventItem {
   title: string;
   categoryTag: string;
   isUpcoming: boolean;
+  startsAt: string;
   date: string;
   time: string;
   location: string;
@@ -41,6 +42,7 @@ interface EventItem {
 
 export const EventosPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'upcoming' | 'past'>('upcoming');
+  const [currentTime, setCurrentTime] = useState(() => Date.now());
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -56,17 +58,21 @@ export const EventosPage: React.FC = () => {
         ease: 'power3.out',
       }
     );
+
+    const statusTimer = window.setInterval(() => setCurrentTime(Date.now()), 30_000);
+    return () => window.clearInterval(statusTimer);
   }, []);
 
   const upcomingEvents: EventItem[] = [
     {
       id: 'mixtle-sesion-1',
       title: 'Reto MIXTLE | Sesión 1: Fundamentos de la Nube',
-      categoryTag: '# próximo',
-      isUpcoming: true,
+      categoryTag: '',
+      isUpcoming: false,
+      startsAt: '2026-09-07T11:30:00-06:00',
       date: '7 de septiembre de 2026',
       time: '11:30 a. m. - 1:30 p. m.',
-      location: 'Universidad Madero (UMAD), Puebla',
+      location: 'Online | Universidad Madero (UMAD), Puebla',
       attendeesCount: 72,
       description:
         'Comienza el Reto MIXTLE con los fundamentos de Cloud Computing, modelos IaaS, PaaS y SaaS, y las ventajas de la nube para preparar la certificación AWS Certified Cloud Practitioner.',
@@ -82,28 +88,79 @@ export const EventosPage: React.FC = () => {
     {
       id: 'mixtle-sesion-2',
       title: 'Reto MIXTLE | Sesión 2: Servicios de Cómputo',
-      categoryTag: '# próximo',
-      isUpcoming: true,
+      categoryTag: '',
+      isUpcoming: false,
+      startsAt: '2026-09-09T09:00:00-06:00',
       date: '9 de septiembre de 2026',
       time: '9:00 a. m. - 11:30 a. m.',
       location: 'Evento online',
-      attendeesCount: 0,
+      attendeesCount: 4,
       description:
         'Conoce las opciones de cómputo de AWS: máquinas virtuales, Amazon EC2, AWS Lambda, contenedores, Elastic Beanstalk y automatización con scripts.',
       speakers: [
         {
-          name: 'Guillermo',
+          name: 'Guillermo Guerrero',
           role: 'Open Source UPIITA',
           avatarUrl: iconMeetup,
         },
       ],
       registrationUrl: 'https://www.meetup.com/aws-sbg-at-national-polytechnic-institute-upiita-campus/events/316452718/',
     },
+    {
+      id: 'mixtle-sesion-4',
+      title: 'Reto MIXTLE | Sesión 4: Seguridad en AWS',
+      categoryTag: '',
+      isUpcoming: false,
+      startsAt: '2026-09-21T11:30:00-06:00',
+      date: '21 de septiembre de 2026',
+      time: '11:30 a. m. - 2:30 p. m.',
+      location: 'Online | Escuela Superior de Tlahuelilpan (ESTl), Hidalgo',
+      attendeesCount: 4,
+      description:
+        'Aprenderemos los pilares fundamentales para proteger tus recursos en la nube, ya que la seguridad es la prioridad número uno ("trabajo cero") dentro de AWS.',
+      speakers: [
+        {
+          name: 'Roberto Flores Segundo (Siegfried)',
+          role: 'Líder del AWS UG Playa Vicente',
+          avatarUrl: iconMeetup,
+        },
+      ],
+      registrationUrl: 'https://www.meetup.com/aws-sbg-at-autonomous-univ-of-hidalgo-state-tlahuelilpan/events/316464495/',
+    },
+    {
+      id: 'mixtle-sesion-5',
+      title: 'RETO MIXTLE | Sesion 5: Networking y Entrega de Contenido',
+      categoryTag: '',
+      isUpcoming: false,
+      startsAt: '2026-09-21T04:30:00-06:00',
+      date: '23 de septiembre de 2026',
+      time: '04:30 p. m. - 07:00 p. m.',
+      location: 'Online | Escuela Superior de Tlahuelilpan (ESTl), Hidalgo',
+      attendeesCount: 4,
+      description:
+        'Aprenderemos a diseñar redes virtuales en la nube y cómo AWS distribuye información en todo el mundo a velocidades increíbles y con la menor latencia.',
+      speakers: [
+        {
+          name: 'Rodrigo Esteban Morales Roldán ',
+          role: 'ESCOM - IPN',
+          avatarUrl: iconMeetup,
+        },
+      ],
+      registrationUrl: 'https://www.meetup.com/aws-sbg-at-autonomous-univ-of-hidalgo-state-tlahuelilpan/events/316464848/',
+    },
   ];
 
   const pastEvents: EventItem[] = [];
 
-  const allEvents: EventItem[] = [...upcomingEvents, ...pastEvents];
+  const allEvents: EventItem[] = [...upcomingEvents, ...pastEvents].map((event) => {
+    const isUpcoming = new Date(event.startsAt).getTime() > currentTime;
+
+    return {
+      ...event,
+      isUpcoming,
+      categoryTag: isUpcoming ? '# próximo' : '# finalizado',
+    };
+  });
 
   const displayedEvents = allEvents.filter((event) =>
     activeTab === 'upcoming'

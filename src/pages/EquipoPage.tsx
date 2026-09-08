@@ -48,13 +48,19 @@ import iconBoltPurple from '../assets/svg/AWS Student Builder Group_RGB_Icons_Bo
 import iconTrophyPurple from '../assets/svg/AWS Student Builder Group_RGB_Icons_Trophy_Purple.svg';
 import iconSmileMagenta from '../assets/svg/AWS Student Builder Group_RGB_Icons_Double Bracket Smile_Magenta.svg';
 
+import photoRubs from '../assets/img/rubs.png';
+import photoMario from '../assets/img/merry.jpg';
+import photoIvan from '../assets/img/ivan.jpg'
+
 interface TeamMember {
   id: string;
   nickname: string;
   name: string;
-  roleTag?: string;
+  initials?: string;       
+  photo?: string;          // Ruta a la foto del miembro
   isLead?: boolean;
-  avatarBg: string;
+  accentColor: string;     // Color hex del acento del miembro (para ring/borde)
+  accentBg: string;        // Clase Tailwind para el fondo del fallback
   notchBg: string;
   bio: string;
   instagramUrl?: string;
@@ -85,49 +91,61 @@ export const EquipoPage: React.FC = () => {
       id: 'Leader',
       nickname: 'Merryts',
       name: 'Mario Lozano',
-      roleTag: '#Lead 2026 ☆',
+      initials: 'ML',
+      photo: photoMario,
       isLead: true,
-      avatarBg: 'bg-sbg-purple text-sbg-base font-extrabold',
+      accentColor: '#AD5CFF',
+      accentBg: 'bg-sbg-purple',
       notchBg: 'bg-sbg-purple',
       bio: 'Bio.',
-      instagramUrl: 'https://instagram.com',
-      linkedinUrl: 'https://linkedin.com',
+      instagramUrl: 'https://www.instagram.com/aws.uaeh',
+      linkedinUrl: 'https://www.linkedin.com/in/mario-lozano-m%C3%A1rquez/',
     },
     {
       id: 'Technical lead',
       nickname: 'Rubs',
       name: 'Rubén Sosa',
-      avatarBg: 'bg-sbg-lightgreen text-sbg-base font-extrabold',
+      initials: 'RS',
+      photo: photoRubs,
+      accentColor: '#00E482',
+      accentBg: 'bg-sbg-lightgreen',
       notchBg: 'bg-sbg-lightgreen',
       bio: 'Bio.',
       instagramUrl: 'https://www.instagram.com/rubs_wtf/',
-      linkedinUrl: 'www.linkedin.com/in/rubensos',
+      linkedinUrl: 'https://www.linkedin.com/in/rubensos',
     },
     {
       id: 'Designer Lead',
       nickname: 'Brau',
       name: 'Ivan Rojo',
-      avatarBg: 'bg-sbg-lightblue text-sbg-base font-extrabold',
+      initials: 'IR',
+      photo: photoIvan,
+      accentColor: '#43B4FF',
+      accentBg: 'bg-sbg-lightblue',
       notchBg: 'bg-sbg-lightblue',
       bio: 'Bio.',
       instagramUrl: 'https://www.instagram.com/ivaaanrojo/',
-      linkedinUrl: 'https://linkedin.com',
+      linkedinUrl: 'https://www.linkedin.com/in/ivan-rojo-878820336/',
     },
     {
       id: 'Marketing Lead',
-      nickname: 'Ola',
-      name: 'Alondra',
-      avatarBg: 'bg-sbg-pink text-sbg-base font-extrabold',
+      nickname: 'noHay',
+      name: 'pincheMarioMiPielesillawe🤬',
+      initials: 'NA',
+      accentColor: '#FF57EA',
+      accentBg: 'bg-sbg-pink',
       notchBg: 'bg-sbg-pink',
       bio: 'Bio.',
       instagramUrl: '',
       linkedinUrl: 'https://linkedin.com',
     },
     {
-      id: '',
-      nickname: '',
-      name: '',
-      avatarBg: 'bg-sbg-orange text-sbg-base font-extrabold',
+      id: 'member-5',
+      nickname: 'Axelinch',
+      name: 'Pinche Axel',
+      initials: 'AL',
+      accentColor: '#FF9900',
+      accentBg: 'bg-sbg-orange',
       notchBg: 'bg-sbg-orange',
       bio: 'Bio.',
       instagramUrl: 'https://instagram.com',
@@ -137,7 +155,9 @@ export const EquipoPage: React.FC = () => {
       id: 'mc',
       nickname: 'Migue',
       name: 'Miguel',
-      avatarBg: 'bg-[#FF57EA] text-sbg-base font-extrabold',
+      initials: 'MC',
+      accentColor: '#FF57EA',
+      accentBg: 'bg-[#FF57EA]',
       notchBg: 'bg-[#FF9900]',
       bio: 'Bio.',
       instagramUrl: 'https://instagram.com',
@@ -152,9 +172,6 @@ export const EquipoPage: React.FC = () => {
 
       {/* Main Contenido */}
       <main className="grow pt-16">
-        {/* ==========================================
-            HERO SECTION: EQUIPO (Grid-Snapped Design)
-           ========================================== */}
         <section className="relative min-h-[75vh] pt-16 pb-20 flex flex-col justify-center overflow-hidden bg-sbg-base border-b border-sbg-division/30">
           {/* CSS estatico para el patron de grid */}
           <div
@@ -174,7 +191,7 @@ export const EquipoPage: React.FC = () => {
           {/* Grid-Snapped SVGs decorativos y cuadrados de colores sólidos */}
           <div className="absolute inset-0 z-5 pointer-events-none overflow-hidden max-w-7xl mx-auto px-6">
             <div className="absolute top-12 right-6 w-full h-100">
-              {/* Rayo Morado alineado a la cuadrícula */}
+              {/* bolt Morado alineado a la cuadrícula */}
               <div className="absolute top-56.5 right-120 w-22.5 h-22.5 hidden md:flex items-center justify-center animate-float">
                 <img src={iconBoltPurple} alt="Bolt" className="w-14 h-14 object-contain opacity-90" />
               </div>
@@ -182,12 +199,12 @@ export const EquipoPage: React.FC = () => {
               {/* Cuadro translúcido morado */}
               <div className="absolute top-10.5 right-96.5 w-22.5 h-22.5 bg-sbg-purple/35 border border-sbg-purple/50 hidden md:block backdrop-blur-xs" />
 
-              {/* Trofeo Morado */}
+              {/* trophy Morado */}
               <div className="absolute top-11.5 right-51.5 w-22.5 h-22.5 hidden md:flex items-center justify-center animate-float-delayed">
                 <img src={iconTrophyPurple} alt="Trophy" className="w-13 h-13 object-contain opacity-90" />
               </div>
 
-              {/* Sonrisa Magenta */}
+              {/* smile Magenta */}
               <div className="absolute top-33 right-6.5 w-22.5 h-22.5 hidden md:flex items-center justify-center animate-float">
                 <img src={iconSmileMagenta} alt="Icon" className="w-15 h-15 object-contain opacity-90" />
               </div>
@@ -258,89 +275,125 @@ export const EquipoPage: React.FC = () => {
             El liderazgo y el core team organizan eventos, guían estudiantes y mantienen viva la comunidad de builders.
           </p>
 
-          {/* Grid de 6 tarjetas de miembros del equipo */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+          {/* tarjetas de miembros del equipo */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {teamMembers.map((member) => (
               <div key={member.id} className="relative group transition-all duration-300">
-                {/* Tarjeta de respaldo con sombra apilada (Hover se vuelve púrpura brillante #AD5CFF) */}
-                <div className="absolute -bottom-2.5 -right-2.5 inset-0 rounded-2xl bg-sbg-base border border-sbg-division/60 group-hover:border-sbg-purple group-hover:bg-sbg-purple/20 group-hover:shadow-[0_0_30px_rgba(173,92,255,0.4)] transition-all duration-300 -z-10" />
+                {/* Sombra apilada de respaldo */}
+                <div className="absolute -bottom-2 -right-2 inset-0 rounded-2xl bg-sbg-base border border-sbg-division/60 group-hover:border-sbg-purple group-hover:shadow-[0_0_30px_rgba(173,92,255,0.35)] transition-all duration-300 -z-10" />
 
                 {/* Tarjeta principal */}
                 <div
-                  className={`relative bg-sbg-base border rounded-2xl p-6 sm:p-7 flex flex-col justify-between h-full transition-all duration-300 overflow-hidden ${
+                  className={`relative bg-sbg-card border rounded-2xl flex flex-col h-full transition-all duration-300 overflow-hidden ${
                     member.isLead
                       ? 'border-sbg-purple shadow-xl shadow-sbg-purple/15 ring-1 ring-sbg-purple/50'
                       : 'border-sbg-division/60 group-hover:border-sbg-purple'
                   }`}
                 >
-                  {/* Línea de acento degradada superior para Lead (Resalta al Lead con línea multicolor arriba) */}
+                  {/* Línea de acento superior (Lead) */}
                   {member.isLead && (
-                    <div className="absolute top-0 left-0 right-0 h-1.5 bg-linear-to from-orange-500 via-sbg-purple to-sbg-secondary" />
+                    <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#FF9900] via-sbg-purple to-sbg-secondary z-10" />
                   )}
 
-                  {/* Tag de muesca de color pequeño superior derecho */}
-                  <div className={`absolute top-4 right-4 w-2.5 h-4 rounded-sm ${member.notchBg}`} />
-
-                  {/* Contenido de la tarjeta */}
-                  <div className="space-y-4">
-                    {/* Contenido: Avatar Box y Nombre */}
-                    <div className="flex items-start gap-4">
-                      {/* Avatar cuadrado con iniciales */}
-                      <div
-                        className={`w-14 h-14 rounded-xl flex items-center justify-center text-xl font-mono shrink-0 relative shadow-md ${member.avatarBg}`}
-                      >
-                        <span>{member.nickname}</span>
-                        {member.isLead && (
-                          <div className="absolute -bottom-1 -right-1 bg-sbg-base p-0.5 rounded-full border border-[#FF9900]">
-                            <Star size={10} className="text-[#FF9900] fill-[#FF9900]" />
-                          </div>
-                        )}
+                  {/* ── FOTO / FALLBACK ─────────────────────────── */}
+                  <div className="relative w-full aspect-[4/3] overflow-hidden bg-sbg-base shrink-0">
+                    {member.photo ? (
+                      <img
+                        src={member.photo}
+                        alt={`Foto de ${member.name}`}
+                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      /* Fallback con iniciales + patrón grid sutil */
+                      <div className={`w-full h-full flex flex-col items-center justify-center gap-3 relative ${member.accentBg}`}>
+                        {/* Patrón de puntos decorativo */}
+                        <div
+                          className="absolute inset-0 opacity-20 pointer-events-none"
+                          style={{
+                            backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)',
+                            backgroundSize: '20px 20px',
+                          }}
+                        />
+                        {/* Iniciales grandes */}
+                        <span className="relative text-sbg-base text-5xl font-extrabold font-mono tracking-tighter select-none">
+                          {member.initials || member.nickname?.slice(0, 2).toUpperCase() || '?'}
+                        </span>
+                        {/* Nickname pequeño */}
+                        <span className="relative text-sbg-base/70 text-xs font-mono tracking-widest uppercase">
+                          {member.nickname}
+                        </span>
                       </div>
+                    )}
 
-                      {/* Nombre y Tag de rol */}
-                      <div className="grow min-w-0 pr-3 pt-0.5">
-                        <h3 className="text-white font-bold text-base sm:text-lg font-mono leading-tight truncate">
-                          {member.name}
+                    {/* Degradado inferior sobre la foto */}
+                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-sbg-card to-transparent" />
+
+                    {/* Estrella de Lead (esquina superior derecha) */}
+                    {member.isLead && (
+                      <div className="absolute top-3 right-3 z-10 bg-sbg-base/80 p-1.5 rounded-full border border-[#FF9900]/60 backdrop-blur-sm">
+                        <Star size={12} className="text-[#FF9900] fill-[#FF9900]" />
+                      </div>
+                    )}
+
+                    <div
+                      className="absolute bottom-2.5 right-3 z-10 w-2 h-5 rounded-sm"
+                      style={{ backgroundColor: member.accentColor }}
+                    />
+                  </div>
+
+                  {/* ── CONTENIDO INFERIOR ──────────────────────── */}
+                  <div className="flex flex-col grow p-5 sm:p-6 gap-3">
+                    {/* Nombre + id de rol */}
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <h3 className="text-white font-bold text-base sm:text-lg font-mono leading-tight">
+                          {member.name || <span className="text-sbg-gray">Por confirmar</span>}
                         </h3>
-                        {member.roleTag && (
-                          <span className="inline-block mt-1 text-[11px] font-mono text-sbg-purple bg-sbg-purple/15 px-2 py-0.5 rounded border border-sbg-purple/30 font-semibold">
-                            {member.roleTag}
+                        {member.nickname && (
+                          <span className="inline-block mt-1.5 text-[11px] font-mono px-2 py-0.5 rounded border font-semibold"
+                            style={{ color: member.accentColor, borderColor: `${member.accentColor}44`, backgroundColor: `${member.accentColor}15` }}>
+                            {member.nickname}
                           </span>
                         )}
                       </div>
+                      {member.id && (
+                        <span className="text-[10px] font-mono whitespace-nowrap mt-0.5 shrink-0"
+                          style={{color: member.accentColor}}>
+                          {member.id}
+                        </span>
+                      )}
                     </div>
 
-                    {/* Descripción Bio */}
-                    <p className="text-sbg-gray text-xs sm:text-sm leading-relaxed font-sans min-h-16">
+                    {/* Bio */}
+                    <p className="text-sbg-gray text-xs sm:text-sm leading-relaxed font-sans grow min-h-10">
                       {member.bio}
                     </p>
-                  </div>
 
-                  {/* Botones de acción redes sociales */}
-                  <div className="pt-6 mt-6 border-t border-sbg-division/40 flex items-center gap-3">
-                    {member.instagramUrl && (
-                      <a
-                        href={member.instagramUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Instagram de ${member.name}`}
-                        className="p-2.5 rounded-xl border border-sbg-division/60 bg-sbg-base/60 text-sbg-gray hover:text-[#E4405F] hover:bg-[#E4405F]/15 hover:border-[#E4405F]/60 active:scale-90 transition-all duration-150 flex items-center justify-center cursor-pointer shadow-xs"
-                      >
-                        <InstagramIcon size={18} />
-                      </a>
-                    )}
-
-                    {member.linkedinUrl && (
-                      <a
-                        href={member.linkedinUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`LinkedIn de ${member.name}`}
-                        className="p-2.5 rounded-xl border border-sbg-division/60 bg-sbg-base/60 text-sbg-gray hover:text-[#0A66C2] hover:bg-[#0A66C2]/15 hover:border-[#0A66C2]/60 active:scale-90 transition-all duration-150 flex items-center justify-center cursor-pointer shadow-xs"
-                      >
-                        <LinkedinIcon size={18} />
-                      </a>
-                    )}
+                    {/* Redes sociales */}
+                    <div className="pt-3 border-t border-sbg-division/40 flex items-center gap-2.5">
+                      {member.instagramUrl && (
+                        <a
+                          href={member.instagramUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Instagram de ${member.name}`}
+                          className="p-2.5 rounded-xl border border-sbg-division/60 bg-sbg-base/60 text-sbg-gray hover:text-[#E4405F] hover:bg-[#E4405F]/15 hover:border-[#E4405F]/60 active:scale-90 transition-all duration-150 flex items-center justify-center cursor-pointer"
+                        >
+                          <InstagramIcon size={16} />
+                        </a>
+                      )}
+                      {member.linkedinUrl && (
+                        <a
+                          href={member.linkedinUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`LinkedIn de ${member.name}`}
+                          className="p-2.5 rounded-xl border border-sbg-division/60 bg-sbg-base/60 text-sbg-gray hover:text-[#0A66C2] hover:bg-[#0A66C2]/15 hover:border-[#0A66C2]/60 active:scale-90 transition-all duration-150 flex items-center justify-center cursor-pointer"
+                        >
+                          <LinkedinIcon size={16} />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

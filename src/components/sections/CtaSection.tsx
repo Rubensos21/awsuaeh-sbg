@@ -55,17 +55,6 @@ export const CtaSection: React.FC = () => {
                 <img src={iconMeetup} alt="Meetup" className="w-6 h-6 object-contain" />
                 <span>Grupo Meetup</span>
               </a>
-
-              {/* Formulario de Registro */}
-              <a
-                href="https://forms.gle"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-sbg-base hover:bg-sbg-secondary text-sbg-base font-bold px-5 py-3 rounded-lg transition-all shadow-lg flex items-center gap-2"
-              >
-                <UserPlus size={16} />
-                <span>Formulario de Registro</span>
-              </a>
             </div>
           </div>
 
