@@ -140,7 +140,7 @@ export const EquipoPage: React.FC = () => {
       linkedinUrl: 'https://linkedin.com',
     },
     {
-      id: 'member-5',
+      id: 'Operations Lead',
       nickname: 'Axelinch',
       name: 'Axel',
       initials: 'AL',
@@ -152,7 +152,7 @@ export const EquipoPage: React.FC = () => {
       linkedinUrl: 'https://linkedin.com',
     },
     {
-      id: 'mc',
+      id: 'Community Lead',
       nickname: 'Migue',
       name: 'Miguel',
       initials: 'MC',
