@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageSquare, UserPlus } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
 import iconTeamsPurple from '../../assets/svg/AWS Student Builder Group_RGB_Icons_Teams_Purple.svg';
 import iconSmileMint from '../../assets/svg/AWS Student Builder Group_RGB_Icons_Single Bracket Smile_Mint.svg';
 import iconTrophyBlue from '../../assets/svg/AWS Student Builder Group_RGB_Icons_Trophy_Blue.svg';
